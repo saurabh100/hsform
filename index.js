@@ -3,9 +3,9 @@ var express = require('express');
 var path = require('path');
 var cors = require('cors');
 
-var config = {
-    "port": 3000
-};
+// var config = {
+//     "port": 3000
+// };
 
 
 var commonRoutes = require('./routes');
@@ -59,6 +59,6 @@ process.on('uncaughtException', function (e) {
 
 app.listen(config.port);
 console.log("Server started at port: ", config.port);
-console.log("browse to URL: http://localhost:3000");
+console.log("browse to URL: https://hsform.herokuapp.com");
 
 module.exports = app;
