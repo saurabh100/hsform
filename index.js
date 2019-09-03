@@ -4,7 +4,7 @@ var path = require('path');
 var cors = require('cors');
 
 var config = {
-    "port": 8080
+    "port": 80
 };
 
 
@@ -59,6 +59,6 @@ process.on('uncaughtException', function (e) {
 
 app.listen(config.port);
 console.log("Server started at port: ", config.port);
-console.log("browse to URL: http://localhost:8080");
+console.log("browse to URL: http://localhost:80");
 
 module.exports = app;
