@@ -1,15 +1,12 @@
 var httprequest = require('request');
+var config = require('../config');
 
 exports.callAPI = (api_method, req) => {
-
-    console.log("connector url == ", api_method);
-
-    var apiKey = "3905b33b-a31e-411f-9da8-f9cb93f136fc";
 
     return new Promise((resolve, reject) => {
 
         httprequest.get({
-            url: "https://api.hubapi.com/owners/v2/owners?hapikey=" + apiKey,
+            url: config.getOwnerApi.url + config.getOwnerApi.apiKey,
         }, function (error, response, body) {
             if (response != undefined) {
 

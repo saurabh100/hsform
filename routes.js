@@ -10,13 +10,25 @@ router.get("/getUrl", async (req, res) => {
     await getContactOwner.callAPI()
         .then((resp) => {
             console.log("resp ==> ", resp.result[0]);
-            var ownerFname = resp.result[0].firstName;
+            var ownerKey = resp.result[0].firstName;
             setTimeout(() => {
                 res.send({
-                    redirectUrl: "https://app.hubspot.com/meetings/" + ownerFname
+                    redirectUrl: getOwnerUrl(ownerKey).url
                 });
             }, 2000);
         });
 });
+
+function getOwnerUrl(ownerKey) {
+    var urlConfig = require("./ownerUrlConfig.json");
+    var owner = {};
+    urlConfig.forEach(element => {
+        if (element.ownerKey == ownerKey) {
+            owner = element;
+        }
+    });
+    return owner;
+}
+
 
 module.exports = router;
