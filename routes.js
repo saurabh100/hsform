@@ -6,17 +6,18 @@ router.get("/", async (req, res) => {
     res.send("Service running...");
 });
 
-router.get("/getUrl", async (req, res) => {
-    await getContactOwner.callAPI()
-        .then((resp) => {
-            console.log("resp ==> ", resp.result[0]);
-            var ownerKey = resp.result[0].firstName;
-            setTimeout(() => {
-                res.send({
-                    redirectUrl: getOwnerUrl(ownerKey).url
-                });
-            }, 2000);
-        });
+router.get("/getUrl/:email", async (req, res) => {
+    console.log("req ===", req.params);
+    var response = {};
+    var apiResp = await getContactOwner.callAPI(req.params.email);
+    console.log("resp ==>", apiResp.result.properties);
+    if (apiResp.result.properties && apiResp.result.properties.hubspot_owner_id) {
+        var ownerKey = apiResp.result.properties.hubspot_owner_id.value;
+        response = {
+            redirectUrl: getOwnerUrl(ownerKey).url
+        };
+    }
+    res.send(response);
 });
 
 function getOwnerUrl(ownerKey) {

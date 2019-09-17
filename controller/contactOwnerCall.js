@@ -1,12 +1,14 @@
 var httprequest = require('request');
 var config = require('../config');
 
-exports.callAPI = (api_method, req) => {
+exports.callAPI = (email) => {
 
     return new Promise((resolve, reject) => {
 
+        var url = config.getOwnerApi.url.replace("{{email}}", email) + config.getOwnerApi.apiKey;
+        console.log(url);
         httprequest.get({
-            url: config.getOwnerApi.url + config.getOwnerApi.apiKey,
+            url: url,
         }, function (error, response, body) {
             if (response != undefined) {
 

@@ -1,7 +1,7 @@
 {
-    "port":"",
-    "getOwnerApi":{
-        "url":"https://api.hubapi.com/owners/v2/owners?hapikey=",
-        "apiKey":"3905b33b-a31e-411f-9da8-f9cb93f136fc"
+    "port": "3000",
+    "getOwnerApi": {
+        "url": "https://api.hubapi.com/contacts/v1/contact/email/{{email}}/profile?hapikey=",
+        "apiKey": "41d4b9c0-1071-4bbe-aab1-e9dc061dec13"
     }
 }
