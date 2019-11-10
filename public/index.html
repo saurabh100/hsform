@@ -1,25 +1,41 @@
 <html>
 
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>	
+	<script charset="utf-8" type="text/javascript" src="./v2.js"></script>
+	<link rel="stylesheet" href="loader.css">
+</head>
+
 <body>
-	<div id="loaderImg" style='display: none;'>Loading</div>
+	<div id="loading">
+		<div id="loading-center">
+			<div id="loading-center-absolute">
+				<div class="object" id="object_one"></div>
+				<div class="object" id="object_two"></div>
+				<div class="object" id="object_three"></div>
+				<div class="object" id="object_four"></div>
+
+			</div>
+		</div>
+
+	</div>
 </body>
 
 </html>
 <!--[if lte IE 8]>
 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
 <![endif]-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src='./hbcustom.js'></script>
-<script charset="utf-8" type="text/javascript" src="./v2.js"></script>
 <script>
+	const hubspot_form_id = '0d62b7f0-6bef-4f45-b7c6-81e9fe6e775a';
 	hbspt.forms.create({
-		portalId: "587015",
-		formId: "391e6cae-75b3-4df9-96ee-45b73a0b4820",	
-		onFormReady: () => {
+		portalId: "6424664",
+		formId: "0d62b7f0-6bef-4f45-b7c6-81e9fe6e775a",
+		onFormReady: () => {			
 			customForm();
 		}
 	});
 </script>
+<script src='./hbcustom.js'></script>
 <!--[if lte IE 8]>
 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
 <![endif]-->
