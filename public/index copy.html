@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+	<div class="loader">
+		<img src="https://loading.io/spinners/microsoft/lg.rotating-balls-spinner.gif" id="loaderImg"
+		  style="display:none; height:150px; width:auto;">
+	  </div>
+</html>
+<!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+	portalId: "6424664",
+	formId: "0d62b7f0-6bef-4f45-b7c6-81e9fe6e775a",
+	inlineMessage: 'Here is a fake inline message',
+	onFormSubmitted: function($form) {
+		// YOUR SCRIPT HERE
+		$('#loaderImg').show();
+		console.log("Form submitted");
+		hsform(0);
+        }
+});
+function hsform(i) {
+	
+    var email = $('#email').val();
+    $.ajax({
+      type: "GET",
+      url: "https://hsform.herokuapp.com/api/getUrl/" + email,
+      success: (data) => {
+        console.log('Submission was successful');
+        console.log(data);
+        var redirectUrl = data.redirectUrl;
+
+        if (i < 50) {
+          if (redirectUrl) {
+            window.location.href = redirectUrl;
+          } else {
+            setTimeout(() => {
+              console.log("==>", i);
+              hsform(++i);
+            }, 5000);
+
+          }
+        }else{
+        $(".loader").html("Some Error Occured. Please try after sometime");
+        }
+      },
+      error: function (data) {
+        console.log('An error occurred.');
+        console.log(data);
+      },
+    });
+  }
+</script>

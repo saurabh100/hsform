@@ -1,38 +1,25 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>Testapp</title>
-  <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
+<html>
 
 <body>
-
-  <form>
-    Name: <input name="name">
-    Email: <input name="email">
-    <button type="button" onclick="loadDoc()">Submit</button>
-  </form>
-
-  <div id="demo"></div>
-
-  <script>
-    function loadDoc() {
-      document.getElementById("demo").innerHTML = "Loading...";
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("demo").innerHTML = "Redirecting...";
-          window.location.href = (JSON.parse(this.responseText).redirectUrl);
-        }
-      };
-      xhttp.open("GET", "/api/getUrl", true);
-      xhttp.send();
-    }
-  </script>
+	<div id="loaderImg" style='display: none;'>Loading</div>
+</body>
 
 </html>
+<!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src='./hbcustom.js'></script>
+<script charset="utf-8" type="text/javascript" src="./v2.js"></script>
+<script>
+	hbspt.forms.create({
+		portalId: "587015",
+		formId: "391e6cae-75b3-4df9-96ee-45b73a0b4820",	
+		onFormReady: () => {
+			customForm();
+		}
+	});
+</script>
+<!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
