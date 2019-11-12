@@ -2,6 +2,6 @@
     "port": "3000",
     "getOwnerApi": {
         "url": "https://api.hubapi.com/contacts/v1/contact/email/{{email}}/profile?hapikey=",
-        "apiKey": "3ace9494-aa2d-4d7e-a425-692920339975"
+        "apiKey": "41d4b9c0-1071-4bbe-aab1-e9dc061dec13"
     }
 }
