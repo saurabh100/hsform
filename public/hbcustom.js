@@ -13,12 +13,12 @@ function submitForm() {
     var frm = iframe.contentWindow.document.getElementById(hbFormId);
     var dataJson = $(frm).serializeArray();
     var data = new FormData($(frm)[0]);
-    var blankField = dataJson.filter((d) => {
+    var blankField = dataJson.filter(function (d) {
         var elem = iframe.contentWindow.document.getElementsByName(d.name)[0];
         return !d.value && elem.hasAttribute('required');
     });
     console.log("blankField == ", blankField);
-    var uemail = dataJson.filter((d) => { return d.name == 'email' });
+    var uemail = dataJson.filter(function (d) { return d.name == 'email' });
     if (blankField.length == 0) {
         $('#loading').show();
         $.ajax({
@@ -46,7 +46,7 @@ function hsform(i, email) {
         type: "GET",
         url: "https://hsform.herokuapp.com/api/getUrl/" + email,
         // url: "/api/getUrl/" + email,
-        success: (data) => {
+        success: function (data) {
             console.log('Assignment initiated');
             var redirectUrl = data.redirectUrl;
             if (i < 50) {
@@ -54,7 +54,7 @@ function hsform(i, email) {
                     console.log('Assignment was successful');
                     window.location.href = redirectUrl;
                 } else {
-                    setTimeout(() => {
+                    setTimeout(function () {
                         console.log("==>", i);
                         hsform(++i, email);
                     }, 5000);
